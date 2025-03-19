@@ -11,7 +11,7 @@ export default function Sidebar({ isSidebarOpen }) {
       <div className="h-full  pb-4 px-6 overflow-y-auto">
         <ul className="space-y-2 font-medium">
           {links.map((link, index) => (
-            <LinkItem {...link}  key={index}/>
+            <LinkItem {...link}  key={index} />
           ))}
         </ul>
       </div>

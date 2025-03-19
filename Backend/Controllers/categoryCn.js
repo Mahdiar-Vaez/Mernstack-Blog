@@ -68,7 +68,10 @@ export const remove=asyncHandler(async(req,res,next)=>{
   const {id}=req?.params
 
   await Category.findByIdAndDelete(id)
-  await Post.deleteMany({categoryId:id})
+  const posts= await Post.deleteMany({categoryId:id})
+  for(let post in posts){
+    await Comment.deleteMany({postId:post._id})
+  }
  
 
   res.status(200).json({

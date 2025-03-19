@@ -1,10 +1,11 @@
-import express from 'express'
-import upload from '../Utils/uploadFile.js'
-import { deleteFile, uploadCn } from '../Controllers/uploadCn.js'
-import { isAdmin } from '../Middlewares/isAdmin.js'
-const uploadRouter=express.Router()
+import express from 'express';
+import upload from '../Utils/uploadFile.js';
+import { deleteFile, uploadCn } from '../Controllers/uploadCn.js';
+import { isAdmin } from '../Middlewares/isAdmin.js';
 
-uploadRouter.route('/').post(isAdmin,upload.single('file'),uploadCn).delete(isAdmin,deleteFile)
+const uploadRouter = express.Router();
 
+uploadRouter.post('/', isAdmin, upload.single('file'), uploadCn);
+uploadRouter.delete('/', isAdmin, deleteFile);
 
-export default uploadRouter
+export default uploadRouter;

@@ -1,21 +1,26 @@
-import catchAsync from "../Utils/catchAsync.js";
+import asyncHandler from "express-async-handler";
 import HandleError from "../Utils/handleError.js";
 import fs from "fs";
+import path from "path";
 import { __dirname } from "../app.js";
 
-export const uploadCn = catchAsync(async (req, res, next) => {
-  const file = req.file;
+export const uploadCn = asyncHandler(async (req, res, next) => {
+  try {
+    const file = req.file;
   if (!file) {
     return next(new HandleError("UPLOAD failed", 400));
   }
   return res.status(201).json({
-    success:true,
+    success: true,
     file: file,
   });
+  } catch (error) {
+    console.log(error)
+  }
+  
 });
 
-
-export const deleteFile = catchAsync(async (req, res, next) => {
+export const deleteFile = asyncHandler(async (req, res, next) => {
   const { fileName } = req.body;
   const deleteFileName = fileName.split("/").at(-1);
 
@@ -25,7 +30,7 @@ export const deleteFile = catchAsync(async (req, res, next) => {
   if (!fileName) {
     return next(new HandleError("File not found", 400));
   }
-  fs.unlinkSync(`${__dirname}/Public/${deleteFileName}`);
+  fs.unlinkSync(path.join(__dirname, 'Public', deleteFileName));
 
   return res.status(200).json({
     success: true,

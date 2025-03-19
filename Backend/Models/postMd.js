@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
   },
   text: {
     type: String,
-    required: [true, "متن اجباری است"],
+   
   },
   categoryId: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,7 +1,7 @@
 import multer from "multer";
 import path from "path";
 
-import { __dirname } from "./../app.js";
+import { __dirname } from "../app.js";
 
 
 
