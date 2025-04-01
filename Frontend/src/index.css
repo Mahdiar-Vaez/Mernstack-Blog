@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 @theme{
   --font-danabold:'danabold';
   --font-danademi:'danademi';
@@ -12,19 +14,19 @@
 
 @font-face {
   font-family: "danalight";
-  src: url(/public/assets/fonts/DanaFaNum-Regular.woff2);
+  src: url(/assets/fonts/DanaFaNum-Regular.woff2);
 }
 @font-face {
   font-family: danamedium;
-  src: url(/public/assets/fonts/Dana-Medium.woff2);
+  src: url(/assets/fonts/Dana-Medium.woff2);
 }
 @font-face {
   font-family: danabold;
-  src: url(/public/assets/fonts/Dana-Bold.woff2);
+  src: url(/assets/fonts/Dana-Bold.woff2);
 }
 @font-face {
   font-family: danademi;
-  src: url(/public/assets/fonts/Dana-DemiBold.woff2);
+  src: url(/assets/fonts/Dana-DemiBold.woff2);
 }
 *{
   @apply transition-colors duration-150;

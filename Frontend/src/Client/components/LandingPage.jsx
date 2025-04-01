@@ -11,9 +11,10 @@ const LandingPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetchData("posts");
+      const response = await fetchData("posts?populate=categoryId");
       if (response.success) {
         setPosts(response.data);
+        console.log(response.data)
       } else {
         toast.error("مشکلی پیش آمده است");
       }
@@ -32,8 +33,12 @@ const LandingPage = () => {
           {posts.map((post) => (
             <div key={post._id} className="bg-white p-4 flex justify-center flex-col rounded shadow-md">
                 <img className="rounded-xl" src={import.meta.env.VITE_BASE_FILE+post?.images} alt="عکس پست" />
+              <span className="text-end">
+                دسته بندی:
+                {post.categoryId.title}
+              </span>
               <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-              <p className="text-gray-700 mb-4">{post.description.slice(0, 100)}...</p>
+              <p className="text-gray-700 mb-4 break-all">{post.description.slice(0, 100)}...</p>
               <Link to={`/blogs/${post._id}`} className="text-blue-500 hover:underline">
                 ادامه مطلب
               </Link>

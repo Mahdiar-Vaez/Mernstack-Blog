@@ -100,7 +100,7 @@ const CreatePost = ({ closeModal }) => {
       }
 
       toast.success("پست با موفقیت ایجاد شد!");
-      closeModal(); // Close the modal
+      closeModal(); 
       navigate("/posts"); // Redirect to posts list
     } catch (error) {
       toast.error(error.message);

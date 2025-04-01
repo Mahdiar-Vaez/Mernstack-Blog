@@ -14,7 +14,8 @@ import {
   FaCalendarAlt,
   FaFacebookMessenger,
   FaUsersCog,
-  FaListAlt,FaComment
+  FaListAlt,FaComment,
+  FaRegListAlt
 } from "react-icons/fa";
 
 import user01 from "../../public/assets/user01.png";
@@ -35,6 +36,11 @@ export const links = [
     icon: FaFacebookMessenger,
     text: " پست ها",
     
+  },
+  {
+ href:"/categories",
+    icon: FaRegListAlt,
+    text: "دسته بندی ها",
   },
   {
     href: "/users",

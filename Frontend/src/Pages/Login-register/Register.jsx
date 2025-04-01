@@ -47,7 +47,7 @@ export default function Register({ handlePageType }) {
           role:data.data.role
 
       });
-      Navigate('/dashboard', { replace: true });},1500)
+      Navigate('/', { replace: true });},1500)
         
       } else {
         toast.error(data.message)

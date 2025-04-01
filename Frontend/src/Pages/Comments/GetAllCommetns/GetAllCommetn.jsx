@@ -23,9 +23,12 @@ export default function GetAllComments() {
     const res = await fetchData(`comments/${id}`, {
       method: "DELETE",
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `bearer ${token}`,
       },
     });
+    console.log("🚀 ~ handleRemove ~ res:", res)
+
+    
     if (res.success) {
         toast.success("نظر با موفقیت حذف شد")
         const newComments = comments?.filter((e) => e._id !== id);
@@ -42,10 +45,9 @@ export default function GetAllComments() {
         authorization: `Bearer ${token}`,
         "content-type": "application/json",
       },
-      body: JSON.stringify({ isActive: !isActive }),
     });
     if (res.success) {
-      notify("نظر با موفقیت بروزرسانی شد", "success");
+      toast.success(res.message);
       const newComments = comments?.map((e) => {
         if (e._id === id) {
           e.isActive = !isActive;
@@ -54,7 +56,7 @@ export default function GetAllComments() {
       });
       setComments(newComments);
     } else {
-      notify("بروزرسانی نظر ناموفق بود", "error");
+      toast.error("بروزرسانی نظر ناموفق بود");
     }
   };
 

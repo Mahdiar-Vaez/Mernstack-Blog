@@ -16,6 +16,9 @@ import Comments from "./Pages/Comments/index.jsx";
 import GetAllComments from "./Pages/Comments/GetAllCommetns/GetAllCommetn.jsx";
 import PrivateRoute from "./components/Private/PrivateRoute.jsx";
 import ClientApp from "./Client/ClientApp.jsx";
+import Categories from "./Pages/Categories/Categories.jsx";
+import GetAllCategories from "./Pages/Categories/GetAll/GetAllCategories.jsx";
+import UpdateCategory from "./Pages/Categories/Update/UpdateCategory.jsx";
 
 export default function App() {
   const { token, user } = useContext(AuthContext);
@@ -73,7 +76,13 @@ export default function App() {
         <Route path="/comments" element={<PrivateRoute><Comments /></PrivateRoute>}>
           <Route path="" element={<GetAllComments />} /> {/* Matches /comments */}
         </Route>
+        <Route path="/categories" element={<PrivateRoute><Categories /></PrivateRoute>}>
+          <Route path="" element={<GetAllCategories />} /> {/* Matches /comments */}
+          <Route path=":id" element={<UpdateCategory />} /> {/* Matches /comments */}
+
+        </Route>
         <Route path="/auth" element={<AuthPageChanger />} />
+        
         <Route path="*" element={<Navigate to="/" />} />
 
      

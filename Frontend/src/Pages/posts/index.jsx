@@ -8,7 +8,7 @@ import CreatePost from './Create/CreatePost';
 import './style.css'
 Modal.setAppElement('#root'); // Set the root element for accessibility
 
-export default function Posts({ darkMode }) {
+export default function Posts() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {

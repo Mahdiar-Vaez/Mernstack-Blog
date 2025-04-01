@@ -38,15 +38,7 @@ export default function GetAllPost() {
       const newPost = posts.filter((e) => e._id !== id);
       setPosts(newPost);
     } else {
-      toast.error(response.message, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(response.message);
     }
   };
 

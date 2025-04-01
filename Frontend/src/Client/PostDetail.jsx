@@ -4,7 +4,6 @@ import fetchData from "../utils/useFetch";
 import { AuthContext } from "../Context/authContext";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
 export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -55,15 +54,19 @@ export default function PostDetail() {
   };
 
   return (
-    <div className="container flex  flex-col p-4 items-start max-md:items-center max-md:text-center mx-auto ">
+    <div className="container  flex  flex-col p-4 items-center max-md:items-center max-md:text-center mx-auto ">
       {post ? (
         <>
           <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
           {post?.images[0] && (
-            <img  src={`${import.meta.env.VITE_BASE_FILE}${post?.images[0]}`} alt={post.title} className="max-w-[500px] max-md:w-[340px] h-auto mb-4 rounded " />
+            <img  src={`${import.meta.env.VITE_BASE_FILE}${post?.images[0]}`} alt={post.title} className="max-w-[500px] max-md:w-[340px] h-auto  mb-4 rounded " />
           )}
-          <p>{post.description}</p>
-          <div className="mt-6">
+          <span>
+            دسته بندی:
+            {post.categoryId.title}
+          </span>
+          <p className='w-[50%]'>{post.description}</p>
+          <div className="mt-6 w-[600px]">
             <h2 className="text-xl font-bold mb-4">نظرات</h2>
             {comments.map((comment) => (
               <div key={comment._id} className="bg-gray-100 p-2 rounded mb-2">

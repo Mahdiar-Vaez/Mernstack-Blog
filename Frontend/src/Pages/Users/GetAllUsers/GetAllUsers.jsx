@@ -23,7 +23,9 @@ export default function GetAllUsers() {
       });
       if (response?.success) {
         setUsers(response.data);
-        toast.success("کاربران با موفقیت دریافت شدند");
+      if (!toast.isActive("success-toast")) {
+                 toast.success("کاربران با موفقیت دریافت شدند", { toastId: "success-toast" });
+               }
       } else {
         console.log("🚀 ~ handleFetch ~ response:", response);
       }
