@@ -7,6 +7,12 @@ class ApiFeatures {
     const queryObj = { ...this.queryString };
     const fieldsItems = ["page", "limit", "sort", "fields"];
     fieldsItems.forEach((el) => delete queryObj[el]);
+  
+    // Handle direct query parameters like categoryId
+    if (queryObj.categoryId) {
+      queryObj.filters = { ...queryObj.filters, categoryId: queryObj.categoryId };
+    }
+  
     this.query = this.query.find(queryObj.filters);
     return this;
   }
